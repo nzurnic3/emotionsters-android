@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<!--    204 72 217 cc48d9   RGB color -->
+
+    <item
+        android:title="Search"
+        android:icon="@drawable/search_icon"
+        android:id="@+id/search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"/>
+    <item
+        android:title="Account"
+        android:icon="@drawable/account_icon"
+        android:id="@+id/account"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:title="Menu"
+        android:icon="@drawable/menu_icon"
+        android:id="@+id/menu"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>
