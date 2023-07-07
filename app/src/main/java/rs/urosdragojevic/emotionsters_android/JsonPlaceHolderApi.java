@@ -4,6 +4,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface JsonPlaceHolderApi {
-    @GET("homescreenText")
+    @GET("homescreenMessage")
     Call<Homescreen> getHomescreen();
 }
