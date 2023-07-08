@@ -1,5 +1,17 @@
 <resources>
-    <string name="app_name">emotionsters-android</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">emotionsters</string>
+    <string name="fear">fear</string>
+    <string name="anger">anger</string>
+    <string name="joy">joy</string>
+    <string name="start">Start</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search here…</string>
+    <string name="code">Code: %d</string>
+    <string name="search_title">Search</string>
+    <string name="account_title">Account</string>
+    <string name="menu_title">Menu</string>
+    <string name="mock_response_body">"{
+	\"jacksTopBubble\": \"Hi,I'm Jack.Welcome to Monster Kingdom!\",
+	\"jacksBottomBubble\": \"Scroll down to meet my friends!\"
+}"</string>
 </resources>

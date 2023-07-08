@@ -1,10 +1,18 @@
 package rs.urosdragojevic.emotionsters_android;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -12,17 +20,25 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-
-    private TextView textView;
-    private TextView textView1;
+    private TextView speechBubbleTop;
+    private TextView speechBubbleBottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        speechBubbleTop = findViewById(R.id.speech_bubble_top);
+        speechBubbleBottom = findViewById(R.id.speech_bubble_bottom);
+        Button buttonJoy = findViewById(R.id.joy_button);
 
-        textView = findViewById(R.id.bubble_text);
-        textView1 = findViewById(R.id.bubble_text1);
+        buttonJoy.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), JoyActivity.class);
+            startActivity(i);
+        });
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.89:8080/emotionsters/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -30,28 +46,41 @@ public class MainActivity extends AppCompatActivity {
 
         JsonPlaceHolderApi jsonPlaceHolderApi = retrofit.create(JsonPlaceHolderApi.class);
 
-        Call<Homescreen> call = jsonPlaceHolderApi.getHomescreen();
-
-        call.enqueue(new Callback<Homescreen>() {
+        Call<HomeScreen> call = jsonPlaceHolderApi.getHomeScreen();
+        call.enqueue(new Callback<HomeScreen>() {
             @Override
-            public void onResponse(Call<Homescreen> call, Response<Homescreen> response) {
+            public void onResponse(@NonNull Call<HomeScreen> call, @NonNull Response<HomeScreen> response) {
                 if (!response.isSuccessful()) {
-                    textView.setText("Code: " + response.code());
-                    textView1.setText("Code: " + response.code());
+                    speechBubbleTop.setText(getResources().getString(R.string.code, response.code()));
+                    speechBubbleBottom.setText(getResources().getString(R.string.code, response.code()));
                     return;
                 }
-                Homescreen homescreen = response.body();
-
-                    textView.setText(homescreen.getText());
-                    textView1.setText(homescreen.getText1());
-
+                HomeScreen homeScreen = response.body();
+                if (homeScreen != null) {
+                    speechBubbleTop.setText(homeScreen.getJacksTopBubble());
+                    speechBubbleBottom.setText(homeScreen.getJacksBottomBubble());
+                }
             }
-            @Override
-            public void onFailure(Call<Homescreen> call, Throwable t) {
-                textView.setText(t.getMessage());
-                textView1.setText(t.getMessage());
 
+            @Override
+            public void onFailure(@NonNull Call<HomeScreen> call, @NonNull Throwable t) {
+                speechBubbleTop.setText(t.getMessage());
+                speechBubbleBottom.setText(t.getMessage());
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setQueryHint(getResources().getString(R.string.search));
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }
