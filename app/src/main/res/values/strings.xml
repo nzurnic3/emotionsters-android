@@ -6,7 +6,7 @@
     <string name="start">Start</string>
     <string name="cancel">Cancel</string>
     <string name="search">Search here…</string>
-    <string name="code">Code: </string>
+    <string name="code">Code: %d</string>
     <string name="search_title">Search</string>
     <string name="account_title">Account</string>
     <string name="menu_title">Menu</string>

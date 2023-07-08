@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -31,12 +30,10 @@ public class MainActivity extends AppCompatActivity {
         speechBubbleTop = findViewById(R.id.speech_bubble_top);
         speechBubbleBottom = findViewById(R.id.speech_bubble_bottom);
         Button buttonJoy = findViewById(R.id.joy_button);
-        buttonJoy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), JoyActivity.class);
-                startActivity(i);
-            }
+
+        buttonJoy.setOnClickListener(v -> {
+            Intent i = new Intent(getApplicationContext(), JoyActivity.class);
+            startActivity(i);
         });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -54,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<HomeScreen> call, @NonNull Response<HomeScreen> response) {
                 if (!response.isSuccessful()) {
-                    speechBubbleTop.setText("Code:" + response.code());
-                    speechBubbleBottom.setText("Code:" + response.code());
+                    speechBubbleTop.setText(getResources().getString(R.string.code, response.code()));
+                    speechBubbleBottom.setText(getResources().getString(R.string.code, response.code()));
                     return;
                 }
                 HomeScreen homeScreen = response.body();

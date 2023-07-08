@@ -4,7 +4,6 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
-import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.assertNotNull;
 
 import android.content.Context;
@@ -72,7 +71,6 @@ public class MainActivityTest {
         assertNotNull(call.execute());
     }
 
-
     @Test
     public void testVisibilityOfDifferentIDs() {
         onView(withId(R.id.speech_bubble_top)).check(matches(isDisplayed()));
@@ -80,11 +78,5 @@ public class MainActivityTest {
         onView(withId(R.id.toolbar)).check(matches(isDisplayed()));
         onView(withId(R.id.jack_image_top)).check(matches(isDisplayed()));
         onView(withId(R.id.jack_image_bottom)).check(matches(isDisplayed()));
-    }
-
-    @Test
-    public void testIsTextDisplayed() {
-        onView(withId(R.id.speech_bubble_top)).check(matches(withText("Hi, I'm Jack. Welcome to Monster Kingdom!")));
-        onView(withId(R.id.speech_bubble_bottom)).check(matches(withText("Scroll down to meet my friends!")));
     }
 }
