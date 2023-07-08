@@ -17,6 +17,7 @@
             layout="@layout/toolbar" />
 
         <View
+            android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
@@ -25,27 +26,27 @@
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/jack_image_bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="516dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="476dp"
+            android:layout_marginEnd="28dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/homescreen_normal_jay_img" />
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="248dp"
+            android:id="@+id/jack_image_top"
+            android:layout_width="225dp"
+            android:layout_height="253dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="264dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/homescreen_jay_img" />
 
         <TextView
-            android:id="@+id/bubble_text"
+            android:id="@+id/speech_bubble_top"
             android:layout_width="160dp"
             android:layout_height="80dp"
             android:layout_centerVertical="true"
@@ -62,7 +63,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/bubble_text1"
+            android:id="@+id/speech_bubble_bottom"
             android:layout_width="160dp"
             android:layout_height="80dp"
             android:layout_centerVertical="true"
@@ -78,23 +79,104 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button"
+        <ImageView
+            android:id="@+id/white_screen"
+            android:layout_width="750dp"
+            android:layout_height="850dp"
+            android:layout_marginTop="750dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/whitescreen" />
+
+        <ImageView
+            android:id="@+id/joy_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="480dp"
+            android:layout_marginTop="880dp"
+            android:layout_marginEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/homescreen_normal_jay_img" />
+
+        <ImageView
+            android:id="@+id/fear_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1064dp"
+            android:layout_marginEnd="256dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/homescreen_normal_jay_img" />
+
+        <ImageView
+            android:id="@+id/anger_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1240dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/homescreen_normal_jay_img" />
+
+        <TextView
+            android:id="@+id/emotionsters_title"
+            android:layout_width="224dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="790dp"
+            android:background="@drawable/pozadina_teksta"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button1" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="980dp"
+            android:id="@+id/joy_button"
+            android:layout_width="190dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="1076dp"
+            android:text="@string/joy"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.188"
+            app:layout_constraintHorizontal_bias="0.926"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <Button
+            android:id="@+id/fear_button"
+            android:layout_width="190dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="1272dp"
+            android:text="@string/fear"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/anger_button"
+            android:layout_width="190dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="1448dp"
+            android:text="@string/anger"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.889"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
