@@ -1,11 +1,8 @@
 package rs.urosdragojevic.emotionsters_android;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,25 +16,18 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity {
-    private TextView speechBubbleTop;
-    private TextView speechBubbleBottom;
+public class flowStartActivity extends AppCompatActivity {
+
+    private TextView speechBubble;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        speechBubbleTop = findViewById(R.id.speech_bubble_top);
-        speechBubbleBottom = findViewById(R.id.speech_bubble_bottom);
+        setContentView(R.layout.activity_flow_start);
+        speechBubble = findViewById(R.id.speech_bubble);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        Button buttonJoy = findViewById(R.id.joy_button);
-
-        buttonJoy.setOnClickListener(v -> {
-            Intent intent = new Intent(this, flowStartActivity.class);
-//            intent.putExtra("someKey", speechBubbleTop.getText());
-            startActivity(intent);
-        });
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.89:8080/emotionsters/")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -50,24 +40,36 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<HomeScreen> call, @NonNull Response<HomeScreen> response) {
                 if (!response.isSuccessful()) {
-                    speechBubbleTop.setText(getResources().getString(R.string.code, response.code()));
-                    speechBubbleBottom.setText(getResources().getString(R.string.code, response.code()));
+                    speechBubble.setText(getResources().getString(R.string.code, response.code()));
                     return;
                 }
                 HomeScreen homeScreen = response.body();
                 if (homeScreen != null) {
-                    speechBubbleTop.setText(homeScreen.getJacksTopBubble());
-                    speechBubbleBottom.setText(homeScreen.getJacksBottomBubble());
+                    speechBubble.setText(homeScreen.getJacksTopBubble());
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<HomeScreen> call, @NonNull Throwable t) {
-                speechBubbleTop.setText(t.getMessage());
-                speechBubbleBottom.setText(t.getMessage());
+                speechBubble.setText(t.getMessage());
             }
         });
     }
+
+//        String i = getIntent().getStringExtra("someKey");
+//
+//        TextView txt = (TextView) findViewById(R.id.speech_bubble);
+//
+//        txt.setText(i);
+
+//        Button cancelButton = findViewById(R.id.cancel_button);
+//        cancelButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(i);
+//            }
+//        });
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,10 +78,5 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) menu.findItem(R.id.search).getActionView();
         searchView.setQueryHint(getResources().getString(R.string.search));
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        return super.onOptionsItemSelected(item);
     }
 }

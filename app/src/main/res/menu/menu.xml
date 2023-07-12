@@ -20,5 +20,4 @@
         android:id="@+id/menu"
         app:showAsAction="ifRoom"/>
 
-
 </menu>

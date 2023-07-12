@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/homescreen_bg_img"
-    tools:context=".JoyActivity">
+    tools:context=".flowStartActivity">
 
     <include
         android:id="@+id/toolbar"
@@ -24,8 +24,8 @@
         android:id="@+id/joy_image"
         android:layout_width="201dp"
         android:layout_height="231dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginTop="144dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/homescreen_normal_jay_img" />
@@ -35,8 +35,8 @@
         android:layout_width="185dp"
         android:layout_height="96dp"
         android:layout_centerVertical="true"
-        android:layout_marginTop="204dp"
-        android:layout_marginEnd="220dp"
+        android:layout_marginTop="188dp"
+        android:layout_marginEnd="192dp"
         android:background="@drawable/bubble_shape"
         android:paddingLeft="22dp"
         android:paddingTop="12dp"
