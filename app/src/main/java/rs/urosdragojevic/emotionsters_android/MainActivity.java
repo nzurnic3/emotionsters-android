@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
         buttonJoy.setOnClickListener(v -> {
             Intent intent = new Intent(this, flowStartActivity.class);
-//            intent.putExtra("someKey", speechBubbleTop.getText());
+            intent.putExtra("someKey", speechBubbleTop.getText());
             startActivity(intent);
         });
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.89:8080/emotionsters/")
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(getResources().getString(R.string.EMOTIONSTERS_BE_BASE_URL))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 HomeScreen homeScreen = response.body();
                 if (homeScreen != null) {
-                    speechBubbleTop.setText(homeScreen.getJacksTopBubble());
-                    speechBubbleBottom.setText(homeScreen.getJacksBottomBubble());
+                    speechBubbleTop.setText(homeScreen.getJacksTopSpeechBubble());
+                    speechBubbleBottom.setText(homeScreen.getJacksBottomSpeechBubble());
                 }
             }
 
