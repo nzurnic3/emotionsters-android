@@ -57,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 HomeScreen homeScreen = response.body();
                 if (homeScreen != null) {
-                    speechBubbleTop.setText(homeScreen.getJacksTopBubble());
-                    speechBubbleBottom.setText(homeScreen.getJacksBottomBubble());
+                    speechBubbleTop.setText(homeScreen.getJacksTopSpeechBubble());
+                    speechBubbleBottom.setText(homeScreen.getJacksBottomSpeechBubble());
                 }
             }
 

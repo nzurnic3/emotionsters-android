@@ -1,14 +1,22 @@
 package rs.urosdragojevic.emotionsters_android;
 
 public class HomeScreen {
-    private String jacksTopBubble;
-    private String jacksBottomBubble;
+    private String jacksTopSpeechBubble;
+    private String jacksBottomSpeechBubble;
 
-    public String getJacksTopBubble() {
-        return jacksTopBubble;
+    public String getJacksTopSpeechBubble() {
+        return jacksTopSpeechBubble;
     }
 
-    public String getJacksBottomBubble() {
-        return jacksBottomBubble;
+    public String getJacksBottomSpeechBubble() {
+        return jacksBottomSpeechBubble;
+    }
+
+    public void setJacksTopSpeechBubble(String jacksTopSpeechBubble) {
+        this.jacksTopSpeechBubble = jacksTopSpeechBubble;
+    }
+
+    public void setJacksBottomSpeechBubble(String jacksBottomSpeechBubble) {
+        this.jacksBottomSpeechBubble = jacksBottomSpeechBubble;
     }
 }
