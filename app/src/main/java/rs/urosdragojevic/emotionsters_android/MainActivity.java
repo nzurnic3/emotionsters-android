@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.89:8080/emotionsters/")
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(getResources().getString(R.string.EMOTIONSTERS_BE_BASE_URL))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

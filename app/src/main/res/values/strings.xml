@@ -10,6 +10,8 @@
     <string name="search_title">Search</string>
     <string name="account_title">Account</string>
     <string name="menu_title">Menu</string>
+    <string name="EMOTIONSTERS_BE_BASE_URL">http://192.168.1.89:8080/emotionsters/</string>
+
     <string name="mock_response_body">"{
 	\"jacksTopBubble\": \"Hi,I'm Jack.Welcome to Monster Kingdom!\",
 	\"jacksBottomBubble\": \"Scroll down to meet my friends!\"
